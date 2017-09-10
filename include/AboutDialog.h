@@ -1,5 +1,4 @@
-#ifndef ABOUTDIALOG_H
-#define ABOUTDIALOG_H
+#pragma once
 
 #include <windows.h>
 
@@ -8,5 +7,3 @@ INT_PTR CALLBACK AboutDialogProc(HWND hwndDlg, UINT uMsg, WPARAM wParam, LPARAM 
 
 /* Show our "about" dialog */
 void ShowAboutDialog(HWND owner);
-
-#endif

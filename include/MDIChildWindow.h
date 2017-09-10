@@ -1,5 +1,4 @@
-#ifndef MDICHILDWINDOW_H
-#define MDICHILDWINDOW_H
+#pragma once
 
 #include <windows.h>
 
@@ -27,5 +26,3 @@ typedef struct tagMdiChildData
   /* Flag to determine whether this is a new document which hasn't been saved */
   BOOL IsUnSaved;
 } MdiChildData;
-
-#endif

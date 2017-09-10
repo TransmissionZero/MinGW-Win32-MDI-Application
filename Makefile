@@ -1,7 +1,7 @@
 # This Makefile will build the MinGW Win32 MDI Example application
 
 # Object files to create for the executable
-OBJS = obj/WinMain.o obj/MainWindow.o obj/MDIChildWindow.o obj/AboutDialog.o obj/Resource.o
+OBJS = obj/AboutDialog.o obj/MainWindow.o obj/MDIChildWindow.o obj/Resource.o obj/WinMain.o
 
 # Warnings to be raised by the C compiler
 WARNS = -Wall
@@ -9,6 +9,7 @@ WARNS = -Wall
 # Names of tools to use when building
 CC = gcc
 RC = windres
+EXE = Win32MDIApp.exe
 
 # Compiler flags. Compile ANSI build only if CHARSET=ANSI.
 ifeq (${CHARSET}, ANSI)
@@ -23,11 +24,11 @@ LDFLAGS = -s -lcomctl32 -lcomdlg32 -Wl,--subsystem,windows
 .PHONY: all clean
 
 # Build executable by default
-all: bin/Win32MDIApp.exe
+all: bin/${EXE}
 
 # Delete all build output
 clean:
-	if exist bin\*  del /q bin\*
+	if exist bin\${EXE}  del /q bin\${EXE}
 	if exist obj\*  del /q obj\*
 
 # Create build output directories if they don't exist
@@ -43,11 +44,11 @@ obj/Resource.o: res/Resource.rc res/Application.manifest res/Application.ico inc
 	${RC} -I./include -I./res -i "$<" -o "$@"
 
 # Build the exectuable
-bin/Win32MDIApp.exe: ${OBJS} | bin
+bin/${EXE}: ${OBJS} | bin
 	${CC} -o "$@" ${OBJS} ${LDFLAGS}
 
 # C header dependencies
-obj/AboutDialog.o:    include/AboutDialog.h include/Resource.h include/Globals.h
-obj/MainWindow.o:     include/MainWindow.h include/MDIChildWindow.h include/AboutDialog.h include/Resource.h include/Globals.h
-obj/MDIChildWindow.o: include/MDIChildWindow.h include/MainWindow.h include/Resource.h include/Globals.h
-obj/WinMain.o:        include/MainWindow.h include/MDIChildWindow.h include/Resource.h include/Globals.h
+obj/AboutDialog.o:    include/AboutDialog.h include/Globals.h include/Resource.h
+obj/MainWindow.o:     include/AboutDialog.h include/Globals.h include/MainWindow.h include/MDIChildWindow.h include/Resource.h
+obj/MDIChildWindow.o: include/Globals.h include/MainWindow.h include/MDIChildWindow.h include/Resource.h
+obj/WinMain.o:        include/Globals.h include/MainWindow.h include/MDIChildWindow.h include/Resource.h

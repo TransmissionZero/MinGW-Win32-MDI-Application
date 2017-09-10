@@ -1,5 +1,4 @@
-#ifndef MAINWINDOW_H
-#define MAINWINDOW_H
+#pragma once
 
 #include <windows.h>
 
@@ -17,5 +16,3 @@ BOOL CALLBACK CloseAllProc(HWND hWnd, LPARAM lParam);
 
 /* First ID Windows should use for menu items it attaches to the "Window" menu */
 #define ID_MDI_FIRSTCHILD 50000
-
-#endif

@@ -1,6 +1,6 @@
 #include "AboutDialog.h"
-#include "Resource.h"
 #include "Globals.h"
+#include "Resource.h"
 
 /* Dialog procedure for our "about" dialog */
 INT_PTR CALLBACK AboutDialogProc(HWND hwndDlg, UINT uMsg, WPARAM wParam, LPARAM lParam)

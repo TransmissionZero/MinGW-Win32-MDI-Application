@@ -1,5 +1,4 @@
-#ifndef GLOBALS_H
-#define GLOBALS_H
+#pragma once
 
 #include <windows.h>
 
@@ -11,5 +10,3 @@ extern HWND g_hMainWindow;
 
 /* Global MDI client window handle */
 extern HWND g_hMDIClient;
-
-#endif
